@@ -1,0 +1,19 @@
+﻿@model CqrsExample.CQRS.Product.Command.ProductCreateCommandRequest
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Ürün Ekle</title>
+</head>
+<body>
+    <form asp-controller="Home" asp-action="CreateProductResult" method="post">
+        <label>Ürün Adı :</label>
+        <input asp-for="Name" />
+        <label>Ürün Fiyat :</label>
+        <input asp-for="Price" />
+        <label>Ürün Aciklaması :</label>
+        <input asp-for="Description" />
+        <button type="submit"></button>
+    </form>
+</body>
+</html>
