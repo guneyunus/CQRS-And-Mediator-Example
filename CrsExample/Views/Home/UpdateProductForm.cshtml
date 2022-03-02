@@ -1,0 +1,10 @@
+﻿@model CqrsExample.CQRS.Product.Command.ProductUpdateCommandRequest
+
+
+<form asp-controller="Home" asp-action="UpdateProduct" method="post">
+    <input  type="hidden" asp-for="Id"  value="@ViewBag.Id"/>
+    <input asp-for="Name" />
+    <input asp-for="Price"/>
+    <input asp-for="Description" />
+    <button type="submit">Gönder</button>
+</form>

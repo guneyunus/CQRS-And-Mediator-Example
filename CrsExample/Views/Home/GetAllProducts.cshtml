@@ -1,0 +1,38 @@
+﻿@model CqrsExample.CQRS.Product.Query.ProductGetAllQueryResponse
+
+
+
+
+@foreach (var item in @Model.Products)
+{
+    <p> <a href="@Url.Action("ProductGetById","Home",new { @item.Id})">@item.Name</a></p>
+}
+
+<hr />
+<hr />
+
+@foreach (var item in @Model.Products)
+{
+    <p> Güncellemek için tıkla <a href="@Url.Action("UpdateProductForm","Home",new { @item.Id})">@item.Name</a></p>
+}
+
+<hr />
+<hr />
+
+@foreach (var item in @Model.Products)
+{
+    <p> Sİlmek için tıkla <a href="@Url.Action("DeleteProduct","Home",new { @item.Id})">@item.Name</a></p>
+}
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+
+    //var productId = $("#selectedProduct").val();
+
+    //$.ajax({
+    //    url: "",
+    //});
+</script>

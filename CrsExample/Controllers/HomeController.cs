@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using CqrsExample.CQRS.Product.Command;
+using CqrsExample.CQRS.Product.Query;
 using MediatR;
 
 namespace CrsExample.Controllers
@@ -46,6 +47,40 @@ namespace CrsExample.Controllers
         public async Task<IActionResult> CreateProductResult(ProductCreateCommandRequest request)
         {
             ProductCreateCommandResponse response = await _mediator.Send(request);
+            return View(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult>  GetAllProducts()
+        {
+            ProductGetAllQueryResponse response = await _mediator.Send(new ProductGetAllQueryRequest());
+            return View(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult>  ProductGetById(Guid id)
+        {
+            ProductGetByIdQueryResponse response = await _mediator.Send(new ProductGetByIdQueryRequest() {Id = id});
+            return View(response);
+        }
+        [HttpGet]
+        public IActionResult UpdateProductForm(Guid id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult>  UpdateProduct(ProductUpdateCommandRequest request)
+        {
+            ProductUpdateCommandResponse response = await _mediator.Send(request);
+            return View(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteProduct(Guid id)
+        {
+            ProductDeleteCommandResponse response = await _mediator.Send(new ProductDeleteCommandRequest() {Id = id});
             return View(response);
         }
 
